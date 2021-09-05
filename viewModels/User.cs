@@ -8,6 +8,8 @@ namespace RPCAuthenticationModule.viewModels
 {
     public class User
     {
+        public int ID { get; set; }
+
         [Required, StringLength(15, MinimumLength = 5), Display(Name ="User Name")]
         public string UserName { get; set; }
 
@@ -20,9 +22,10 @@ namespace RPCAuthenticationModule.viewModels
         [Required, Display(Name ="First Name")]
         public string FirstName { get; set; }
 
-        [Required, Display(Name = "First Name")]
+        [Required, Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime Birthdate { get; set; }
     }
 }

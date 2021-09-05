@@ -13,5 +13,7 @@ namespace RPCAuthenticationModule.Models
         {
 
         }
+
+        public DbSet<RPCAuthenticationModule.viewModels.User> User { get; set; }
     }
 }

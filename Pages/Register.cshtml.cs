@@ -13,14 +13,17 @@ namespace RPCAuthenticationModule.Pages
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
+        private readonly RPCAuthenticationModule.Models.AuthDBContext _context;
 
         [BindProperty]
         public User Model { get; set; }
 
-        public RegisterModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public RegisterModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,
+            RPCAuthenticationModule.Models.AuthDBContext _context)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this._context = _context;
         }
 
         public void OnGet()
@@ -40,7 +43,10 @@ namespace RPCAuthenticationModule.Pages
 
                 if (result.Succeeded)
                 {
+                    _context.User.Add(Model);
+                    await _context.SaveChangesAsync();
                     await signInManager.SignInAsync(user, false);
+
                     return RedirectToPage("Index");
                 }
 

@@ -1,0 +1,45 @@
+﻿@page
+@model ListPageModel
+@{
+    ViewData["Title"] = "Users List";
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Model[0].UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model[0].Birthdate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthdate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
