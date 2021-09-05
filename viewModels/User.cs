@@ -10,7 +10,7 @@ namespace RPCAuthenticationModule.viewModels
     {
         public int ID { get; set; }
 
-        [Required, StringLength(15, MinimumLength = 5), Display(Name ="User Name")]
+        [Required, StringLength(15, MinimumLength = 5), Display(Name ="Username")]
         public string UserName { get; set; }
 
         [Required, DataType(DataType.Password)]
